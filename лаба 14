@@ -1,0 +1,51 @@
+class Student:
+    def __init__(self, name, group_number, performance):
+        self.name = name
+        self.group_number = group_number
+        self.performance = performance
+
+students = [Student("Иванов И.И.", 101, [4, 5, 3, 4, 5]),
+            Student("Петров П.П.", 102, [3, 4, 4, 5, 5]),
+            Student("Сидоров С.С.", 103, [5, 5, 5, 5, 5]),
+            Student("Козлов К.К.", 104, [4, 4, 4, 4, 4]),
+            Student("Смирнова А.А.", 101, [3, 3, 4, 4, 3]),
+            Student("Николаева О.О.", 102, [5, 5, 5, 4, 5]),
+            Student("Васильева Н.Н.", 103, [4, 4, 4, 4, 5]),
+            Student("Федорова Е.Е.", 104, [3, 5, 4, 5, 3]),
+            Student("Алексеева М.М.", 101, [5, 4, 4, 5, 5]),
+            Student("Дмитриев Д.Д.", 102, [3, 4, 3, 3, 4])]
+
+students.sort(key=lambda x: sum(x.performance) / len(x.performance))  # сортировка по среднему баллу
+
+print("Студенты с оценками только 4 или 5:")
+for student in students:
+    if all(grade in (4, 5) for grade in student.performance):
+        print(student.name, student.group_number)
+
+class Train:
+    def __init__(self, destination, train_number, departure_time):
+        self.destination = destination
+        self.train_number = train_number
+        self.departure_time = departure_time
+
+trains = [Train("Москва", 101, "08:00"),
+          Train("Санкт-Петербург", 102, "09:00"),
+          Train("Екатеринбург", 103, "10:00"),
+          Train("Казань", 104, "10:30"),
+          Train("Москва", 105, "11:00")]
+
+# сортировка по номерам поездов
+trains.sort(key=lambda x: x.train_number)
+
+# функция для вывода информации о поезде по номеру
+def print_train_info(train_number):
+    for train in trains:
+        if train.train_number == train_number:
+            print(f"Поезд номер {train.train_number}, идущий в {train.destination}, отправляется в {train.departure_time}")
+
+# функция для сортировки по пункту назначения и времени отправления
+def sort_trains_by_destination_and_time():
+    trains.sort(key=lambda x: (x.destination, x.departure_time))
+
+print_train_info(103)  # пример вызова функции для вывода информации о поезде по номеру
+sort_trains_by_destination_and_time()  # пример вызова функции для сортировки по пункту назначения и времени отправления

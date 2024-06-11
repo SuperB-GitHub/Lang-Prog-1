@@ -1,0 +1,17 @@
+import sqlite3
+conn = sqlite3.connect('Lection 9.db')
+cursor = conn.cursor()
+cursor.execute("SELECT * FROM Адрес WHERE Дом = 10 ORDER BY Дом")
+results = cursor.fetchall()
+print('1 Задание: ',results)
+print('')
+cursor.execute('SELECT ФИО FROM Адрес ORDER BY ФИО LIMIT 5')
+results = cursor.fetchall()
+print('2 Задание: ',results)
+print('')
+cursor.execute("SELECT * FROM Адрес WHERE Улица = 'Ленина' ORDER BY ФИО")
+results = cursor.fetchall()
+print('3 Задание: ',results)
+print('')
+conn.close()
+
